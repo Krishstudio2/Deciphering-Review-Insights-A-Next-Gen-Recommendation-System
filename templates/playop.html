@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display String</title>
+    <style>
+        body{
+            background-color: #09051d; /* Background color for the body */
+        }
+        .container {
+          width: calc(50% - 10px); /* 50% width with spacing */
+          height: 30px; /* Height of the progress bar container */
+          border: 1px solid #ccc; /* Border for the container */
+          border-radius: 5px; /* Rounded corners for the container */
+          overflow: hidden; /* Hide overflowing content */
+          margin-bottom: 20px; /* Bottom margin for spacing */
+        }
+
+        .progress-bar {
+          height: 100%; /* Height of the progress bar */
+          background-color: #4CAF50; /* Background color for positive progress */
+          text-align: center; /* Center text horizontally */
+          line-height: 30px; /* Center text vertically */
+          color: white; /* Text color */
+          transition: width 0.5s ease-in-out; /* Smooth transition for width changes */
+        }
+
+        .progress-bar-negative {
+          height: 100%; /* Height of the progress bar */
+          background-color: red; /* Background color for negative progress */
+          text-align: center; /* Center text horizontally */
+          line-height: 30px; /* Center text vertically */
+          color: white; /* Text color */
+          transition: width 0.5s ease-in-out; /* Smooth transition for width changes */
+        }
+
+        h2 {
+            text-align: center; /* Center text horizontally */
+            color: #007bff; /* Heading color */
+            font-size: 24px; /* Font size for the heading */
+            margin-bottom: 20px; /* Bottom margin for spacing */
+        }
+
+        footer {
+            position: fixed; /* Fixed positioning for footer */
+            bottom: 0; /* Align footer to the bottom */
+            width: 100%; /* Full width */
+            background-color: #333; /* Background color for the footer */
+            color: #fff; /* Text color for the footer */
+            text-align: center; /* Center text horizontally */
+            padding: 10px 0; /* Padding for the footer */
+        }
+
+        .reviews-container {
+            display: flex; /* Display children in a flex container */
+            flex-wrap: wrap; /* Allow items to wrap */
+            justify-content: center; /* Center children horizontally */
+            align-items: flex-start; /* Align children to the top */
+            margin-bottom: 20px; /* Bottom margin for spacing */
+            margin-left: 200px;
+            margin-top: 200px;
+        }
+
+        .review-section {
+            width: calc(50% - 10px); /* 50% width with spacing */
+            margin-right: 20px; /* Right margin for spacing */
+            margin-bottom: 20px; /* Bottom margin for spacing */
+        }
+
+        .review-section p {
+            margin: 0; /* Remove default margin for paragraphs */
+            color: white; /* Text color for review section headings */
+        }
+
+        #percentage_negative{
+            display: none; /* Hide negative percentage */
+        }
+        #percentage{
+            display: none; /* Hide positive percentage */
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg); /* Initial rotation */
+            }
+            100% {
+                transform: rotate(360deg); /* Final rotation */
+            }
+        }
+
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: rotate 2s linear infinite;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="reviews-container">
+        <!-- Positive reviews section -->
+        <div class="review-section divstyp">
+            <p>Positive reviews</p> <!-- Heading for positive reviews -->
+            <div class="container">
+                <div class="progress-bar" id="progress-bar"></div> <!-- Positive progress bar -->
+            </div>
+            <h1 id="percentage">{{ tpc_percentage }}%</h1> <!-- Positive percentage -->
+        </div>
+        <!-- Negative reviews section -->
+        <div class="review-section divstyn">
+            <p>Negative reviews</p> <!-- Heading for negative reviews -->
+            <div class="container">
+                <div class="progress-bar-negative" id="progress-bar-negative"></div> <!-- Negative progress bar -->
+            </div>
+            <h1 id="percentage_negative">{{ tnc_percentage }}%</h1> <!-- Negative percentage -->
+        </div>
+    </div>
+    <h2>{{ my_string }}</h2> <!-- Main heading -->
+    <script>
+
+      var percentage = parseInt(document.getElementById('percentage').innerText);
+      var progressBar = document.getElementById('progress-bar');
+      progressBar.style.width = percentage + '%';
+      progressBar.innerHTML = percentage + '%';
+
+      var percentage_negative = parseInt(document.getElementById('percentage_negative').innerText);
+      var progressBar_negative = document.getElementById('progress-bar-negative');
+      progressBar_negative.style.width = percentage_negative + '%';
+      progressBar_negative.innerHTML = percentage_negative + '%';
+
+  </script>
+    <footer>
+        &copy; 2024 DRI : A NEXT-GEN RECOMMENDATION SYSTEM. All rights reserved.
+    </footer>
+</body>
+</html>
